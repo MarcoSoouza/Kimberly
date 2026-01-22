@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,32 +9,37 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
-/* Header Styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header and Navigation */
 header {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .logo h1 {
-    color: #fff;
+    color: #2c3e50;
     font-size: 1.8rem;
     font-weight: 700;
 }
@@ -49,71 +54,57 @@ nav {
 }
 
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
+    color: #2c3e50;
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
 }
 
 .nav-links a:hover {
-    color: #ffd700;
+    color: #3498db;
 }
 
-/* Section Styles */
-section {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #3498db;
+    transition: width 0.3s ease;
 }
 
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Services Section */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.service-card:hover {
-    transform: translateY(-10px) rotateY(5deg);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.service-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.service-card h3 {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.service-card p {
-    color: rgba(255, 255, 255, 0.8);
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Campaigns Section */
+.campaigns {
+    padding: 120px 5% 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.campaigns h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.campaigns h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
 .campaigns-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -122,24 +113,23 @@ h2 {
 }
 
 .campaign-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: white;
     border-radius: 15px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    perspective: 1000px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .campaign-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .campaign-image {
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .campaign-image img {
@@ -158,63 +148,110 @@ h2 {
 }
 
 .campaign-content h3 {
-    color: #fff;
-    margin-bottom: 0.5rem;
     font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
 }
 
 .campaign-content p {
-    color: rgba(255, 255, 255, 0.8);
+    color: #7f8c8d;
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .campaign-link {
     display: inline-block;
-    color: #ffd700;
-    text-decoration: none;
+    color: #3498db;
     font-weight: 600;
     transition: color 0.3s ease;
+    position: relative;
 }
 
 .campaign-link:hover {
-    color: #fff;
+    color: #2980b9;
+}
+
+.campaign-link::after {
+    content: '→';
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.campaign-link:hover::after {
+    margin-left: 10px;
+}
+
+/* Services Section */
+.services {
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.services h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    opacity: 0.9;
+    line-height: 1.6;
 }
 
 /* Footer */
 footer {
-    background: rgba(0, 0, 0, 0.5);
+    background: #2c3e50;
+    color: white;
     text-align: center;
-    padding: 2rem;
-    color: rgba(255, 255, 255, 0.7);
+    padding: 2rem 0;
+    margin-top: 80px;
 }
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.service-card, .campaign-card {
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-.service-card:nth-child(4) { animation-delay: 0.4s; }
-
-.campaign-card:nth-child(1) { animation-delay: 0.1s; }
-.campaign-card:nth-child(2) { animation-delay: 0.2s; }
-.campaign-card:nth-child(3) { animation-delay: 0.3s; }
-.campaign-card:nth-child(4) { animation-delay: 0.4s; }
-.campaign-card:nth-child(5) { animation-delay: 0.5s; }
-.campaign-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -232,32 +269,47 @@ footer {
         margin-right: 1rem;
     }
 
-    section {
-        padding: 3rem 1rem;
-    }
-
-    h2 {
+    .campaigns h2,
+    .services h2 {
         font-size: 2rem;
     }
 
-    .services-grid, .campaigns-grid {
+    .campaigns-grid,
+    .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .campaign-card,
+    .service-card {
+        margin: 0 1rem;
     }
 }
 
-/* 3D Effects */
-.campaign-card {
-    transform-style: preserve-3d;
+/* Scroll animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.campaign-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateZ(1px);
-    pointer-events: none;
+.campaign-card,
+.service-card {
+    animation: fadeInUp 0.6s ease-out;
 }
+
+.campaign-card:nth-child(1) { animation-delay: 0.1s; }
+.campaign-card:nth-child(2) { animation-delay: 0.2s; }
+.campaign-card:nth-child(3) { animation-delay: 0.3s; }
+.campaign-card:nth-child(4) { animation-delay: 0.4s; }
+.campaign-card:nth-child(5) { animation-delay: 0.5s; }
+.campaign-card:nth-child(6) { animation-delay: 0.6s; }
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
