@@ -24,6 +24,13 @@
 
     <section id="campaigns" class="campaigns">
         <h2>Nossas Campanhas de Destaque</h2>
+        <div class="campaigns-3d">
+            <div class="floating-elements">
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+            </div>
+        </div>
         <div class="campaigns-grid">
             <div class="campaign-card">
                 <div class="campaign-image">
@@ -139,6 +146,26 @@
                 header.style.background = 'rgba(255, 255, 255, 0.1)';
                 header.style.boxShadow = 'none';
             }
+        });
+
+        // 3D cube rotation (additional control if needed)
+        const cube = document.querySelector('.cube');
+        if (cube) {
+            let rotation = 0;
+            setInterval(() => {
+                rotation += 1;
+                cube.style.transform = `rotateX(${rotation}deg) rotateY(${rotation}deg)`;
+            }, 50);
+        }
+
+        // Floating elements animation (additional control)
+        const elements = document.querySelectorAll('.element');
+        elements.forEach((element, index) => {
+            let floatOffset = 0;
+            setInterval(() => {
+                floatOffset += 0.5;
+                element.style.transform = `translateY(${Math.sin(floatOffset) * 10}px) rotate(${floatOffset * 2}deg)`;
+            }, 50);
         });
     </script>
 </body>
